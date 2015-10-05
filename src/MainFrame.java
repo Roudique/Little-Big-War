@@ -57,126 +57,28 @@ public class MainFrame extends JFrame {
 		ImageIcon werIcon = UnitImageIcons.werewolfImg100x100;
 		ImageIcon wizIcon = UnitImageIcons.wizardImg100x100;
 		
-		JButton btn_1_1 = new JButton();
-		btn_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn_1_1.setIcon(wizIcon);
+		int HORIZONTAL_BUTTONS = 6;
+		int VERTICAL_BUTTONS = 4;
+		int BUTTON_WIDTH = 100;
+		int BUTTON_HEIGHT = 100;
+		
+		JButton[][] buttons = new JButton[HORIZONTAL_BUTTONS][VERTICAL_BUTTONS];
+		
+		int x = 0, y = 0;
+		for ( int j = 0; j < VERTICAL_BUTTONS; j++, y += 100 ) {
+			x = 0;
+			for ( int i = 0; i < HORIZONTAL_BUTTONS; i++, x += 100 ) {
+				buttons[i][j] = new JButton();
+				buttons[i][j].setBounds(x, y, BUTTON_WIDTH, BUTTON_HEIGHT);
+				contentPane.add(buttons[i][j]);
 			}
-		});
-		btn_1_1.setBounds(0, 0, 100, 100);
-		contentPane.add(btn_1_1);
+		}
 		
-		JButton btn_1_2 = new JButton();
-		btn_1_2.setBounds(100, 0, 100, 100);
-		contentPane.add(btn_1_2);
-		
-		JButton btn_1_3 = new JButton();
-		btn_1_3.setBounds(200, 0, 100, 100);
-		contentPane.add(btn_1_3);
-		
-		JButton btn_2_1 = new JButton();
-		btn_2_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn_2_1.setIcon(priestIcon);
-			}
-		});
-		btn_2_1.setBounds(0, 100, 100, 100);
-		contentPane.add(btn_2_1);
-		
-		JButton btn_2_2 = new JButton();
-		btn_2_2.setBounds(100, 100, 100, 100);
-		contentPane.add(btn_2_2);
-		
-		JButton btn_2_3 = new JButton();
-		btn_2_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn_2_3.setIcon(warIcon);
-			}
-		});
-		btn_2_3.setBounds(200, 100, 100, 100);
-		contentPane.add(btn_2_3);
-		
-		JButton btn_1_4 = new JButton();
-		btn_1_4.setBounds(300, 0, 100, 100);
-		contentPane.add(btn_1_4);
-		
-		JButton btn_1_5 = new JButton();
-		btn_1_5.setBounds(400, 0, 100, 100);
-		contentPane.add(btn_1_5);
-		
-		JButton btn_2_4 = new JButton();
-		btn_2_4.setBounds(300, 100, 100, 100);
-		contentPane.add(btn_2_4);
-		
-		JButton btn_2_5 = new JButton();
-		btn_2_5.setBounds(400, 100, 100, 100);
-		contentPane.add(btn_2_5);
-		
-		JButton btn_3_1 = new JButton();
-		btn_3_1.setBounds(0, 200, 100, 100);
-		contentPane.add(btn_3_1);
-		
-		JButton btn_3_2 = new JButton();
-		btn_3_2.setBounds(100, 200, 100, 100);
-		contentPane.add(btn_3_2);
-		
-		JButton btn_3_3 = new JButton();
-		btn_3_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn_3_3.setIcon(demonIcon);
-			}
-		});
-		btn_3_3.setBounds(200, 200, 100, 100);
-		contentPane.add(btn_3_3);
-		
-		JButton btn_3_4 = new JButton();
-		btn_3_4.setBounds(300, 200, 100, 100);
-		contentPane.add(btn_3_4);
-		
-		JButton btn_3_5 = new JButton();
-		btn_3_5.setBounds(400, 200, 100, 100);
-		contentPane.add(btn_3_5);
-		
-		JButton btn_4_1 = new JButton();
-		btn_4_1.setBounds(0, 300, 100, 100);
-		contentPane.add(btn_4_1);
-		
-		JButton btn_4_2 = new JButton();
-		btn_4_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				btn_4_2.setIcon(vampIcon);
-			}
-		});
-		btn_4_2.setBounds(100, 300, 100, 100);
-		contentPane.add(btn_4_2);
-		
-		JButton btn_4_3 = new JButton();
-		btn_4_3.setBounds(200, 300, 100, 100);
-		contentPane.add(btn_4_3);
-		
-		JButton btn_4_4 = new JButton();
-		btn_4_4.setBounds(300, 300, 100, 100);
-		contentPane.add(btn_4_4);
-		
-		JButton btn_4_5 = new JButton();
-		btn_4_5.setBounds(400, 300, 100, 100);
-		contentPane.add(btn_4_5);
-		
-		JButton btn_1_6 = new JButton();
-		btn_1_6.setBounds(500, 0, 100, 100);
-		contentPane.add(btn_1_6);
-		
-		JButton btn_2_6 = new JButton();
-		btn_2_6.setBounds(500, 101, 100, 100);
-		contentPane.add(btn_2_6);
-		
-		JButton btn_3_6 = new JButton();
-		btn_3_6.setBounds(500, 200, 100, 100);
-		contentPane.add(btn_3_6);
-		
-		JButton btn_4_6 = new JButton();
-		btn_4_6.setBounds(500, 300, 100, 100);
-		contentPane.add(btn_4_6);
+//		buttons[0][0].addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				buttons[0][0].setIcon(wizIcon);;
+//			}
+//		});
 	}
 	
 }
