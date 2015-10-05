@@ -11,7 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 
 import com.roudique.lbw.utils.UnitImageIcons;
-
+import com.roudique.lbw.units.*;
+import com.roudique.lbw.utils.Utilities;
+import javax.swing.JList;
+import javax.swing.JLabel;
 
 public class MainFrame extends JFrame {
 
@@ -36,6 +39,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings("unused")
 	public MainFrame() {
 		setMinimumSize(new Dimension(620, 500));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,6 +48,18 @@ public class MainFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		String[] data = {"Warrior", "Berserk", };
+		JList<String> list = new JList<String>();
+		list.setListData(data);
+		list.setLayoutOrientation(JList.VERTICAL);
+		list.setBounds(6, 428, 400, 200);
+		contentPane.add(list);
+		
+		JLabel lblSelectUnitAnd = new JLabel("Select unit and put it on the board:");
+		lblSelectUnitAnd.setBounds(6, 400, 224, 16);
+		contentPane.add(lblSelectUnitAnd);
+		
 		
 		ImageIcon warIcon = UnitImageIcons.warriorImg100x100;
 		ImageIcon bersIcon = UnitImageIcons.berserkImg100x100;
@@ -74,11 +90,11 @@ public class MainFrame extends JFrame {
 			}
 		}
 		
-//		buttons[0][0].addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				buttons[0][0].setIcon(wizIcon);;
-//			}
-//		});
+		buttons[0][0].addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(list.getSelectedIndex());
+			}
+		});
 	}
-	
 }
+
