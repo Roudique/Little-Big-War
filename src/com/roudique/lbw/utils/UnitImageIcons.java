@@ -15,6 +15,7 @@ public class UnitImageIcons {
 	static public ImageIcon werewolfImg100x100 = new ImageIcon("/Users/roudique/git/Little-Big-War/res/werewolf_100x100.png");
 	static public ImageIcon wizardImg100x100 = new ImageIcon("/Users/roudique/git/Little-Big-War/res/wizard_100x100.png");
 
+	
 	public UnitImageIcons() {
 	}
 }

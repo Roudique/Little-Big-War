@@ -16,9 +16,27 @@ import com.roudique.lbw.utils.Utilities;
 import javax.swing.JList;
 import javax.swing.JLabel;
 
-public class MainFrame extends JFrame {
-
+public class MainFrame extends JFrame implements ActionListener {
+	int BUTTON_WIDTH = 100;
+	int BUTTON_HEIGHT = 100;
+	int HORIZONTAL_BUTTONS = 6;
+	int VERTICAL_BUTTONS = 4;
 	private JPanel contentPane;
+	private JButton[][] buttons = new JButton[HORIZONTAL_BUTTONS][VERTICAL_BUTTONS];
+	
+	String[] data = Utilities.getUnitList();
+	JList<String> list = new JList<String>();
+
+	ImageIcon[] icons = {UnitImageIcons.berserkImg100x100,
+						 UnitImageIcons.demonImg100x100,
+						 UnitImageIcons.healerImg100x100,
+						 UnitImageIcons.necromancerImg100x100,
+						 UnitImageIcons.priestImg100x100,
+						 UnitImageIcons.rogueImg100x100,
+						 UnitImageIcons.vampireImg100x100,
+						 UnitImageIcons.warlockImg100x100,
+						 UnitImageIcons.werewolfImg100x100,
+						 UnitImageIcons.wizardImg100x100};
 
 	/**
 	 * Launch the application.
@@ -49,11 +67,9 @@ public class MainFrame extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		String[] data = Utilities.getUnitList();
-		JList<String> list = new JList<String>();
 		list.setListData(data);
 		list.setLayoutOrientation(JList.VERTICAL);
-		list.setBounds(6, 428, 400, 200);
+		list.setBounds(6, 428, 400, 170);
 		contentPane.add(list);
 		
 		JLabel lblSelectUnitAnd = new JLabel("Select unit and put it on the board:");
@@ -61,25 +77,9 @@ public class MainFrame extends JFrame {
 		contentPane.add(lblSelectUnitAnd);
 		
 		
-		ImageIcon warIcon = UnitImageIcons.warriorImg100x100;
-		ImageIcon bersIcon = UnitImageIcons.berserkImg100x100;
-		ImageIcon demonIcon = UnitImageIcons.demonImg100x100;
-		ImageIcon healIcon = UnitImageIcons.healerImg100x100;
-		ImageIcon necrIcon = UnitImageIcons.necromancerImg100x100;
-		ImageIcon priestIcon = UnitImageIcons.priestImg100x100;
-		ImageIcon rogIcon = UnitImageIcons.rogueImg100x100;
-		ImageIcon vampIcon = UnitImageIcons.vampireImg100x100;
-		ImageIcon warlIcon = UnitImageIcons.warlockImg100x100;
-		ImageIcon werIcon = UnitImageIcons.werewolfImg100x100;
-		ImageIcon wizIcon = UnitImageIcons.wizardImg100x100;
-		
-		int HORIZONTAL_BUTTONS = 6;
-		int VERTICAL_BUTTONS = 4;
-		int BUTTON_WIDTH = 100;
-		int BUTTON_HEIGHT = 100;
-		
-		JButton[][] buttons = new JButton[HORIZONTAL_BUTTONS][VERTICAL_BUTTONS];
-		
+		/*
+		 * Initializing buttons and adding them to JPanel contentPane
+		 */
 		int x = 0, y = 0;
 		for ( int j = 0; j < VERTICAL_BUTTONS; j++, y += 100 ) {
 			x = 0;
@@ -90,11 +90,25 @@ public class MainFrame extends JFrame {
 			}
 		}
 		
-		buttons[0][0].addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(list.getSelectedIndex());
+		/*
+		 * Adding ActionListener to buttons
+		 */
+		for ( int j = 0; j < VERTICAL_BUTTONS; j++ ) {
+			for ( int i = 0; i < HORIZONTAL_BUTTONS; i++ ) {
+				buttons[i][j].addActionListener(this);
 			}
-		});
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if ( !list.isSelectionEmpty() ) {
+			JButton but = (JButton)e.getSource();
+			ImageIcon ic = icons[list.getSelectedIndex()];
+			but.setIcon(ic);
+		}
+		
+		
 	}
 }
 
